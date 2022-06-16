@@ -45,6 +45,7 @@ def readSecDataFolder(folderName):
 	"Goodwill",
 	"FiniteLivedIntangibleAssetsNet",
 	"EntityCommonStockSharesOutstanding"
+	"NetIncomeLoss"
 	]
 
 	for item in importantColumnList:
@@ -98,9 +99,10 @@ def readSecDataFolder(folderName):
 			goodwill = safeGet(dataMap, "Goodwill", 0.0)
 			intangibles = safeGet(dataMap, "FiniteLivedIntangibleAssetsNet", 0.0)
 			shares = safeGet(dataMap, "EntityCommonStockSharesOutstanding", 0.0)
+			netIncome = safeGet(dataMap, "NetIncomeLoss", 0.0)
 
-			sqlQuery = f"INSERT INTO annual_reports (ticker, year, assets, liabilities, goodwill, intangibles, shares)"
-			sqlQuery += f" VALUES ('{ticker}','{year}', '{assets}', '{liabilities}', '{goodwill}', '{intangibles}', '{shares}')"
+			sqlQuery = f"INSERT INTO annual_reports (ticker, year, assets, liabilities, goodwill, intangibles, net_income, shares)"
+			sqlQuery += f" VALUES ('{ticker}','{year}', '{assets}', '{liabilities}', '{goodwill}', '{intangibles}', '{netIncome}', '{shares}')"
 
 			try:
 				cursor.execute(sqlQuery)
@@ -155,6 +157,7 @@ TABLES['annual_reports'] = (
     "liabilities double, "
     "goodwill double, "
     "intangibles double, "
+    "net_income double,"
     "shares double, "
     "PRIMARY KEY(ticker, year)"
     ") ENGINE=InnoDB"
