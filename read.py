@@ -44,8 +44,7 @@ def readSecDataFolder(folderName):
 	"Liabilities",
 	"Goodwill",
 	"FiniteLivedIntangibleAssetsNet",
-	"EntityCommonStockSharesOutstanding",
-	"NetIncomeLoss"
+	"EntityCommonStockSharesOutstanding"
 	]
 
 	for item in importantColumnList:
